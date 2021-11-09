@@ -9,7 +9,7 @@ function App() {
         {/* <Link to="/admin">to admin</Link> */}
         <Routes>
           
-          <Route exact path="/admin" element={<Admin/>}/>
+          <Route path="/admin" element={<Admin/>}/>
           <Route path="/" element={<Home/>}/>
             
         </Routes>

@@ -1,0 +1,150 @@
+.admin-login {
+  height: 100vh;
+  //   background-color: khaki;
+  background-image: linear-gradient(120deg,
+      rgba(lighten($color-coral-light, 30%), 0.9) 30%,
+      rgba(lighten($color-grey-dark, 50%), 0.9) 50%
+    ),
+    url(../../product/logo/bg-1.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.5rem;
+  position: relative;
+
+  &__box {
+    border: 0.2rem solid $color-coral-light;
+    width: fit-content;
+    padding: 5rem;
+    border-radius: 2rem;
+
+    @include centerPosition();
+  }
+
+  &__header {
+    text-transform: uppercase;
+    margin: 1.5rem;
+    letter-spacing: 0.5rem;
+    color: $color-coral-dark;
+  }
+
+  &__form {
+    &--label {
+      margin: 1.5rem;
+    }
+
+    &--input {
+      border: none;
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+        border-bottom: 3px solid $color-secondary-dark;
+
+        &:invalid {
+          border-bottom: 3px solid $color-danger;
+        }
+      }
+    }
+
+    &--remember-check {
+      display: block;
+    }
+  }
+}
+
+.admin {
+  &__bg {
+    min-height: 100vh;
+  }
+
+  &__logo {
+    text-align: center;
+    width: 100%;
+    height: fit-content;
+    // overflow: hidden;
+    margin-top: 1rem;
+    border-bottom: 1px solid $color-grey-dark;
+    padding: .5rem 0;
+    position: relative;
+
+    &--img {
+      width: 100%;
+      background-color: $color-coral-light;
+    }
+
+    &::after{
+        content:"";
+        width: 100%;
+        height: 100%;
+        background-image:linear-gradient(135deg,transparent 40%,rgba($color-white,.7) 53%, transparent 65%);
+        z-index: 3; 
+        position: absolute;
+        top:0;
+        left: 0;
+        @include aniFlashHighLight();
+    }
+
+  }
+
+  &__control {
+    @include boxShadow();
+    background-image: linear-gradient(
+        rgba(lighten($color-grey-light, 30%), 0.9) 30%,
+        rgba(lighten($color-grey-dark, 50%), 0.9) 50%
+      ),
+      url(../../product/logo/bg-1.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: 15%;
+    overflow: hidden;
+
+    &--list {
+      list-style-type: none;
+      padding: 1rem;
+    }
+
+    &--link {
+      &,
+      &:link,
+      &:visited {
+        text-decoration: none;
+        color: $color-grey-dark;
+        padding: 1rem;
+        display: inline-block;
+        width: 100%;
+        font-weight: bold;
+        transition: all .2s;
+      }
+
+      &:hover {
+        background-color: lightcoral;
+        color: $color-white;
+        @include boxShadow();
+        transform: translateY(-.5rem) rotate(3deg);
+      }
+
+      &:active,
+      &:focus {
+        color: $color-white;
+        @include boxShadow();
+        background-color: lightcoral;
+        transform: translateY(0rem) rotate(3deg);
+      }
+
+      & span {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  &__content {
+    min-height: 100vh;
+    background-image: linear-gradient(
+      rgba(lighten($color-grey-light, 30%), 0.9) 30%,
+      rgba(lighten($color-grey-dark, 50%), 0.9) 50%
+    );
+  }
+}

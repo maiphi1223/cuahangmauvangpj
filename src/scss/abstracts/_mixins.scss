@@ -1,0 +1,19 @@
+@mixin centerPosition{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+@mixin boxShadow($color:$color-black,$para:.1){
+    box-shadow: 1rem .5rem .5rem rgba($color, $para);
+}
+
+
+
+// ANIMATIONS
+@mixin aniFlashHighLight(){
+    animation-name: flash-highlight;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+}
