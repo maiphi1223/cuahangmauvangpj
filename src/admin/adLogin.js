@@ -1,4 +1,4 @@
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 
 export default function AdLogin(props) {
   const [pass, setpass] = useState("");  
@@ -31,7 +31,7 @@ export default function AdLogin(props) {
 
   return (
     <div className="container-fluid admin-login">
-      <div className="admin-login__box">
+      <div className="admin-login__box col-11 col-sm-8  col-lg-6 col-xl-5 ">
         <h3 className="admin-login__header">Login</h3>
         <form
           action="#login"

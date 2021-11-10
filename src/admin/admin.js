@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AdContentTab from "./adContent";
 import AdControlTab from "./adControl";
 import AdLogin from "./adLogin";
 
-export default function Admin() {
+export default function Admin(props) {
   let AL = sessionStorage.getItem("AL");
   const [isActive, setActive] = useState(AL ? JSON.parse(AL) : false);
 
@@ -11,9 +11,9 @@ export default function Admin() {
     setActive(value);
     sessionStorage.AL = JSON.stringify(value);
   }
-
   return (
     <>
+    
       {!isActive ? (
         <AdLogin setActive={setActiveAdmin} />
       ) : (

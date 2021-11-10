@@ -7,11 +7,24 @@
 }
 
 html {
-    font-size: 62.5%;
+    font-size: 62.5%; //1rem = 10px
 
-    @media screen and (min-width:800px) {
-        font-size: 100%;
+    // @media screen and (min-width:800px) {
+    //     font-size: 100%;
+    // }
+    @include respond(4k){
+        font-size: 100%;//16px   
+    } 
+    @include respond(lap-l){
+        font-size: 81.25%;//13px
     }
+    @include respond(lap){
+        font-size: 75%;//12px
+    }   
+    @include respond(mo-l){
+        font-size: 62.5%;//10px
+    }
+
 }
 
 body {

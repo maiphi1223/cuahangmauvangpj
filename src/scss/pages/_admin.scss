@@ -1,7 +1,8 @@
 .admin-login {
   height: 100vh;
   //   background-color: khaki;
-  background-image: linear-gradient(120deg,
+  background-image: linear-gradient(
+      120deg,
       rgba(lighten($color-coral-light, 30%), 0.9) 30%,
       rgba(lighten($color-grey-dark, 50%), 0.9) 50%
     ),
@@ -16,7 +17,7 @@
 
   &__box {
     border: 0.2rem solid $color-coral-light;
-    width: fit-content;
+    // width: fit-content;
     padding: 5rem;
     border-radius: 2rem;
 
@@ -57,36 +58,43 @@
 
 .admin {
   &__bg {
-    min-height: 100vh;
+    min-height: 100vh;//viewhigh vw viewwidth viewport
   }
 
   &__logo {
     text-align: center;
-    width: 100%;
     height: fit-content;
-    // overflow: hidden;
     margin-top: 1rem;
-    border-bottom: 1px solid $color-grey-dark;
-    padding: .5rem 0;
+    // border-bottom: 1px solid $color-grey-dark;
+    padding: 0.5rem 0;
     position: relative;
+    display: inline-block;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     &--img {
       width: 100%;
       background-color: $color-coral-light;
     }
 
-    &::after{
-        content:"";
-        width: 100%;
-        height: 100%;
-        background-image:linear-gradient(135deg,transparent 40%,rgba($color-white,.7) 53%, transparent 65%);
-        z-index: 3; 
-        position: absolute;
-        top:0;
-        left: 0;
-        @include aniFlashHighLight();
+    &::after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(
+        135deg,
+        transparent 70%,
+        rgba($color-white, 0.7) 75%,
+        transparent 80%
+      );
+      z-index: 3;
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include aniFlashHighLight();
     }
-
   }
 
   &__control {
@@ -100,10 +108,65 @@
     background-size: cover;
     background-position-x: 15%;
     overflow: hidden;
+    position: relative;
+    height: 100vh;
+
+    @include respond(tab){
+        height: fit-content;
+    }
+
+    &--icon-toggle {
+      font-size: 3rem;
+      color: $color-coral-light;
+      padding: 0.5rem;
+      text-align: center;
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      transition: all 0.2s;
+
+      //display icon
+      @include respond(4k) {
+        display: none;
+      }
+      @include respond(lap-l) {
+        display: none;
+      }
+      @include respond(tab) {
+        display: inline-block;
+      }
+
+      &:hover {
+        @include boxShadow();
+        @include hoverbtn;
+      }
+
+      &:active {
+        @include boxShadow();
+        @include activebtn;
+
+        // & + .admin__control--list {
+        //   visibility: visible;
+        //   height: 100%;
+        // }
+      }
+
+      & i {
+        display: block;
+      }
+    }
 
     &--list {
       list-style-type: none;
-      padding: 1rem;
+      padding: 0.5rem;
+      transition: height 1s;
+      overflow: hidden;
+
+      @include respond(tab) {
+        // visibility: hidden;
+        // height: 0;;
+        display: none;
+      }
     }
 
     &--link {
@@ -116,22 +179,17 @@
         display: inline-block;
         width: 100%;
         font-weight: bold;
-        transition: all .2s;
       }
 
       &:hover {
-        background-color: lightcoral;
-        color: $color-white;
         @include boxShadow();
-        transform: translateY(-.5rem) rotate(3deg);
+        @include hoverbtn;
       }
 
       &:active,
       &:focus {
-        color: $color-white;
         @include boxShadow();
-        background-color: lightcoral;
-        transform: translateY(0rem) rotate(3deg);
+        @include activebtn;
       }
 
       & span {
@@ -142,9 +200,77 @@
 
   &__content {
     min-height: 100vh;
+    padding: 0;
     background-image: linear-gradient(
       rgba(lighten($color-grey-light, 30%), 0.9) 30%,
       rgba(lighten($color-grey-dark, 50%), 0.9) 50%
     );
   }
 }
+
+//show and hide list
+.navToggle {
+    visibility: visible !important;
+    // display: block;
+    animation-name: navToggle;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+.show{
+    display: block;
+}
+
+
+//PRODUCTS
+.admin__products{
+
+    &--nav{
+        width: 100%;
+        height: 7rem;
+        display:flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        padding:2rem;
+        background-color: rgba($color-grey-light, 0.5);
+
+        @include boxShadow-small();
+
+        &-item{
+            &,
+            &:link,
+            &:visited{
+                text-decoration: none;
+                color:$color-grey-dark;
+                padding: .5rem;
+            }
+
+            &:hover {
+                @include boxShadow();
+                @include hoverbtn;
+              }
+        
+              &:active,
+              &:focus {
+                @include boxShadow();
+                @include activebtn;
+              }
+        
+        }
+    }
+
+    &--listing-box{
+        & label{
+            margin-right: 1rem;
+        }
+    }
+
+    &--listing-select{
+        border:none;
+        padding:.5rem 1rem;
+    }
+
+
+}
+
+
